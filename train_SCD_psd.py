@@ -295,6 +295,10 @@ def validate(val_loader, net, criterion, curr_epoch):
 
         with torch.no_grad():
             out_change, outputs_A, outputs_B = net(imgs_A, imgs_B)
+
+            labels_A = torch.argmax(labels_A, dim=3).long()
+            labels_B = torch.argmax(labels_B, dim=3).long()
+
             loss_A = criterion(outputs_A, labels_A)
             loss_B = criterion(outputs_B, labels_B)
             loss = loss_A * 0.5 + loss_B * 0.5
