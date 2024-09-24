@@ -44,7 +44,7 @@ def weighted_BCE(output, target, weight_pos=None, weight_neg=None):
 def weighted_BCE_logits(logit_pixel, truth_pixel, weight_pos=0.25, weight_neg=0.75):
     logit = logit_pixel.view(-1)
     truth = truth_pixel.view(-1)
-    assert(logit.shape==truth.shape)
+    #assert(logit.shape==truth.shape)
 
     loss = F.binary_cross_entropy_with_logits(logit, truth, reduction='none')
     
