@@ -217,7 +217,7 @@ def train(train_loader, net, criterion, optimizer, val_loader):
             labels_B = torch.argmax(labels_B, dim=3).long() 
             
             labels_bn = torch.argmax(labels_bn, dim=-1).unsqueeze(1).float()
-            print(f"out_change: {out_change.shape}, labels_bn: {labels_bn.shape}")
+            # print(f"out_change: {out_change.shape}, labels_bn: {labels_bn.shape}")
 
             loss_seg = criterion(outputs_A, labels_A) + criterion(outputs_B, labels_B)
             loss_bn = weighted_BCE_logits(out_change, labels_bn)
