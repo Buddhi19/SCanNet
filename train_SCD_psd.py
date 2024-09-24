@@ -213,9 +213,11 @@ def train(train_loader, net, criterion, optimizer, val_loader):
                     io.imsave(os.path.join(args['pred_dir'], NET_NAME + imgs_id[0] + '_psdA_epoch%diter%d.png'%(curr_epoch, running_iter)), psdA_color)
                     io.imsave(os.path.join(args['pred_dir'], NET_NAME + imgs_id[0] + '_psdB_epoch%diter%d.png'%(curr_epoch, running_iter)), psdB_color)
 
+            labels_A = torch.argmax(labels_A, dim=3).long()  
+            labels_B = torch.argmax(labels_B, dim=3).long() 
 
-            loss_seg = criterion(outputs_A, labels_A.squeeze(1)) + criterion(outputs_B, labels_B.squeeze(1))
-            loss_bn = weighted_BCE_logits(out_change, labels_bn.squeeze(1))
+            loss_seg = criterion(outputs_A, labels_A) + criterion(outputs_B, labels_B)
+            loss_bn = weighted_BCE_logits(out_change, labels_bn)
             loss_sc = criterion_sc(outputs_A[:, 1:], outputs_B[:, 1:], labels_bn)
                                   
             loss = loss_seg*0.5 + loss_bn + loss_sc
