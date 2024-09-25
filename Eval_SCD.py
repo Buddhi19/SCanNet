@@ -44,10 +44,10 @@ def cal_kappa(hist):
 def Eval():
     IMAGE_FORMAT = '.png'
     
-    INFER_DIR1 = '/PATH_TO_PRED/im1/'  # Inference path1
-    INFER_DIR2 = '/PATH_TO_PRED/im2/'  # Inference path2
-    LABEL_DIR1 = '/PATH_TO_GT/label1/'  # GroundTruth path
-    LABEL_DIR2 = '/PATH_TO_GT/label2/'  # GroundTruth path
+    INFER_DIR1 = '../SECOND/val/im1/'  # Inference path1
+    INFER_DIR2 = '../SECOND/val/im2/'  # Inference path2
+    LABEL_DIR1 = '../SECOND/val/label1/'  # GroundTruth path
+    LABEL_DIR2 = '../SECOND/val/label2/'  # GroundTruth path
 
     infer_list1 = glob.glob(INFER_DIR1 + "*{}".format(IMAGE_FORMAT))
     infer_list2 = glob.glob(INFER_DIR2 + "*{}".format(IMAGE_FORMAT))
