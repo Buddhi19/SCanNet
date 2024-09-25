@@ -83,6 +83,7 @@ def Eval():
             sys.exit(0)
         infer_array = np.array(infer)
         unique_set = set(np.unique(infer_array))
+        print(unique_set)
         assert unique_set.issubset(set([0, 1, 2, 3, 4, 5, 6])), "unrecognized label number"
         label_array = np.array(label)
         assert infer_array.shape == label_array.shape, "The size of prediction and target must be the same"
